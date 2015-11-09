@@ -1,91 +1,87 @@
-package Oppgave1;
+//Import everything for graphics and windows.
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.*;
 
-import java.awt.Component;
-import java.awt.Graphics;
+//Import other classical goodies
 import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.Icon;
-
-public class CompositeIcon implements Icon{
-	
-	private List<Icon> icons;
-	private int height;
+public class CompositeIcon implements Icon {
+	private ArrayList<Icon> icons;
 	private int width;
+	private int height;
 	
-	public CompositeIcon(){
-		//Initialize the array list and set current height and width to 0
-		this.icons = new ArrayList<Icon>();
-		this.height = 0;
-		this.width = 0;
+	public CompositeIcon() {
+		icons = new ArrayList<Icon>();
+		width = 0;
+		height = 0;
 	}
 	
-	public void addIcon(Icon icon){
-		this.icons.add(icon);
-		
-		//Efficiency, check if this image is the tallest one, and if it is
-		//Set the CompositeIcon's height to it, since we only need the tallest one
-		if(icon.getIconHeight() > height){
-			height = icon.getIconHeight();
+	/**
+	 *	Adds an icon to the list of icons (and redraws?).
+	 */
+	public void addIcon(Icon ic) {
+		icons.add(ic);
+
+		//Changes the width accordingly
+		width += ic.getIconWidth();
+
+		//Checks if the compositeIcon got bigger.
+		if(height < ic.getIconHeight()) {
+			height = ic.getIconHeight();
 		}
-		//Efficiency, just add the width once on ever add, instead of parsing
-		//all sub-icons every time this.getIconWidth() is called;
-		width += icon.getIconWidth();
 	}
 	
-	
-	@Override
-	public void paintIcon(Component c, Graphics g, int x, int y) {
-		for(Icon icn : icons){
-			
-			//This test allows a reference to itself to exist within icons
-			//without causing it to loop forever
-			if(icn == this){
-				for(Icon icn2 : icons)
-				{
-					if(icn2 == this){
-						continue;
-					}else{
-						icn2.paintIcon(c, g, x, y);
-						x += icn2.getIconWidth();
-					}
+	/**
+	 *	Removes an icon from the list of icons.
+	 */
+	public void removeIcon(Icon ic) {
+		icons.remove(ic);
+
+		//Changes the width
+		width -= ic.getIconWidth();
+
+		//Checks if the height has to be changed.
+		if(height == ic.getIconHeight()){
+			int newHeight = 0;
+
+			for(Icon i : icons) {
+				if (newHeight < i.getIconHeight()) {
+					newHeight = i.getIconHeight();
 				}
-			continue;
-			} //This whole check can be removed if you don't have the desire for some
-			//freaky recursive composite icons, This might interfere with the real icon width
-			
-			
-			icn.paintIcon(c, g, x, y);
-			x += icn.getIconWidth();
-		}
-		
-	}
-
-	@Override
-	public int getIconWidth() {
-		/* OLD ALGORITHM
-		int totalW = 0;
-		for(Icon icn : icons){
-			totalW += icn.getIconWidth();
-		}
-		return totalW;
-		*/
-
-		return width;
-	}
-
-	@Override
-	public int getIconHeight() {
-		/* OLD ALGORITHM
-		int tallestImg = 0;
-		for(Icon icn : icons){
-			if(tallestImg < icn.getIconHeight()){
-				tallestImg = icn.getIconHeight();
 			}
 		}
-		return tallestImg;
-		*/
+	}
+	
+	/**
+	 *	Returns the width of the icon
+	 */
+	public int getIconWidth() {
+		return width;
+	}
+	
+	/**
+	 *	Returns the height of the icon
+	 */
+	public int getIconHeight() {
 		return height;
 	}
+	
+	/**
+	 *	(Re)Paints all icons in the list in succession from left to right.
+	 */
+	public void paintIcon(Component c, Graphics g, int x, int y) {
+        int newY = 0;
 
+        for(Icon i : icons) {
+			//Finds the center for the vertical.
+			newY = y + (getIconHeight() - i.getIconHeight()) / 2;
+			
+			//Paints the current icon in the list.
+			i.paintIcon(c,g,x,newY);
+			
+			//Finds the x coordinate for the next icon.
+			x += i.getIconWidth();
+		}
+	}
 }
