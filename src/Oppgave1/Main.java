@@ -1,94 +1,93 @@
-package Oppgave1;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//Import everything for graphics and gui
+import java.awt.*;
+import java.awt.geom.*;
 
-import javax.swing.Icon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+//Import everything for windows
+import java.awt.event.*;
+import javax.swing.*;
 
-import CompositeIconTest.CompositeIcon;
+//Import other classical goodies
+import java.util.ArrayList;
 
 public class Main {
-		
+	/**
+	 *	Static fields supposed to make createIconButtonListener work.
+	 */
+	//CompositeIcon and its label to contain the generated squares.
+	private static CompositeIcon comp;
+	private static JLabel compLabel;
+	
+	//Frame to be "repacked"
+	private static JFrame frame;
+	
+	/**
+	 *	Creates a window containing 3 buttons creating colored squares.
+	 */
 	public static void main(String[] args){
-		//Create the jframe / window
-		JFrame frame = new JFrame("Aflevering 1 / 2");
-		//It says to use this for a good exit in the documentation: https://docs.oracle.com/javase/tutorial/uiswing/components/frame.html
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//Get the root content area
-		Container root = frame.getContentPane();
+		//Creates a CompositeIcon to contain all the beautiful squares
+		comp = new CompositeIcon();
 		
-		//Make 3 buttons, red, green, and blue
-		JButton red = new JButton("Red");
-		JButton green = new JButton("Green");
-		JButton blue = new JButton("Blue");
+		//Creates a Label to contain the CompositeIcon.
+		compLabel = new JLabel(comp);
+		compLabel.setLayout(new FlowLayout());
+		compLabel.setToolTipText("These are squares.");
 		
+		//Squares to add for the buttons.
+		SquareIcon blueIcon = new SquareIcon(30,Color.BLUE);
+		SquareIcon greenIcon = new SquareIcon(30,Color.GREEN);
+		SquareIcon redIcon = new SquareIcon(30,Color.RED);
 		
-		//Since BorderLayout can only hold one element per position, we make that element a container by itself
-		//This will hold the buttons
+		//Buttons
+		JButton blueButton = createIconButton("Blue","blue",blueIcon);
+		JButton greenButton = createIconButton("Green","green",greenIcon);
+		JButton redButton = createIconButton("Red","red",redIcon);
+
+		//Creates a panel with flowlayout for the colorbuttons.
 		JPanel buttonPanel = new JPanel();
-		//Set the layout to FlowLayout, since this automatically adjusts the buttons nicely
 		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.setToolTipText("These buttons add squares below.");
 		
-		//Add the buttons to the container we made
-		buttonPanel.add(red);
-		buttonPanel.add(green);
-		buttonPanel.add(blue);
+		buttonPanel.add(blueButton);
+		buttonPanel.add(greenButton);
+		buttonPanel.add(redButton);
 		
+		//Setting up the window
+		frame = new JFrame();
+		frame.setLayout(new BorderLayout());	//Redundant, but here for readability
 		
-		//Add the container to the main window, in the top position
-		root.add(buttonPanel, BorderLayout.NORTH);
+		frame.add(buttonPanel, BorderLayout.NORTH);
+		frame.add(compLabel, BorderLayout.SOUTH);
 		
-		//Make the label to hold our icon
-		JLabel iconLabel = new JLabel();
-		
-		//Create the composite icon
-		CompositeIcon cIcon = new CompositeIcon();
-		//And place it in the label
-		iconLabel.setIcon(cIcon);
-		
-		//Add the icon label to our frame
-		root.add(iconLabel, BorderLayout.CENTER);
-		
-		//Add action listeners to the buttons
-		red.addActionListener(createIconButtonActionListener(frame, cIcon, new SquareIcon(10, Color.RED)));
-		green.addActionListener(createIconButtonActionListener(frame, cIcon, new SquareIcon(10, Color.GREEN)));
-		blue.addActionListener(createIconButtonActionListener(frame, cIcon, new SquareIcon(10, Color.BLUE)));
-		
-		//FUN:
-		//We add the CompositeIcon to itself, this is not normally permitted, but i changed the paint method to not loop forever
-		JButton cpy = new JButton("Copy");
-		buttonPanel.add(cpy);
-		cpy.addActionListener(createIconButtonActionListener(frame, cIcon, cIcon));
-		
-		//Pack the window and make it visible, 
-		//taken from the documentation: https://docs.oracle.com/javase/tutorial/uiswing/components/frame.html
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
-		
 	}
-	
-	private static ActionListener createIconButtonActionListener(final JFrame frame, final CompositeIcon cicon, final Icon icon){
-		
-		return new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				cicon.addIcon(icon);
-				frame.pack();
-				frame.repaint();
-				
-				
-			}
-			
-		};
+	/**
+	 * Creates a JButton based on Name, color and square to add.
+     */
+	private static JButton createIconButton(String name, String color, SquareIcon square) {
+		JButton result = new JButton(color);
+		result.addActionListener(createIconButtonListener(square));
+		result.setToolTipText("Make " + color + " square.");
+
+		return result;
 	}
-	
+
+	/**
+	 *	Creates an actionlistener for the square specified.
+	 *
+	 *	In the first iteration a new SquareIcon object was created by a formal colorvariable,
+	 *	but due to memory implifications this optimization was done.
+	 */
+	private static ActionListener createIconButtonListener(final SquareIcon squareIcon) {
+		return new
+			ActionListener() {
+				public void actionPerformed(ActionEvent event) {
+					comp.addIcon(squareIcon);
+					compLabel.updateUI();
+					frame.pack();
+				}
+			};
+	}
 }
