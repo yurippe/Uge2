@@ -17,3 +17,8 @@ Bruger dit program andre mønstre end composite?
  - Både SquareIcon og CompositeIcon implementerer icon interfacet, og
    et CompositeIcon er i SquareWindow holder styr på alle de tilføjede
    icons. Hermed følger den præcis Composite Mønstret.
+   
+To run:
+ - Go to the bin folder (On linux `cd bin`)
+ - On windows, run Oppgave1.bat or Oppgave2.bat
+ - On linux run `java Oppgave1.Main` or `java Oppgave2.ParkingTest`
