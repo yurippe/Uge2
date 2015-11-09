@@ -1,17 +1,14 @@
-//General awesome
-import java.util.*;
+package Oppgave2;
 
 //Listener awesomeness
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 
 //GUI stuff
-import java.awt.event.*;
 import javax.swing.*;
 
 //Gui and graphics
 import java.awt.*;
-import java.awt.geom.*;
 
 public class RoadGUI implements ChangeListener {
 	//The counter currently referenced.

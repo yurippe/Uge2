@@ -1,3 +1,5 @@
+package Oppgave2;
+
 public class ParkingTest{
 	public static void main(String[] args) {
 		//Creates the counter
@@ -6,8 +8,8 @@ public class ParkingTest{
 		//Creates all the windows
 		RoadGUI r1 = new RoadGUI(counter);
 		RoadGUI r2 = new RoadGUI(counter);
-		GuardGUI g1 = new GuardGUI(counter);
-		GuardGUI g2 = new GuardGUI(counter);
+		new GuardGUI(counter);
+		new GuardGUI(counter);
 		
 		//Adding the RoadGUI as ChangeListeners to the Counter
 		counter.addChangeListener(r1);

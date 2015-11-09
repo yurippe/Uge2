@@ -1,0 +1,2 @@
+java Oppgave2.ParkingTest
+pause

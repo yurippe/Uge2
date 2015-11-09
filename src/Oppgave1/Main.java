@@ -1,13 +1,11 @@
+package Oppgave1;
 //Import everything for graphics and gui
 import java.awt.*;
-import java.awt.geom.*;
 
 //Import everything for windows
 import java.awt.event.*;
 import javax.swing.*;
 
-//Import other classical goodies
-import java.util.ArrayList;
 
 public class Main {
 	/**

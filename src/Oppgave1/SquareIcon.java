@@ -1,3 +1,5 @@
+package Oppgave1;
+
 import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;

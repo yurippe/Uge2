@@ -1,9 +1,4 @@
-//General awesome
-import java.util.*;
-
-//Listener awesomeness
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
+package Oppgave2;
 
 //GUI stuff
 import java.awt.event.*;
@@ -11,7 +6,7 @@ import javax.swing.*;
 
 //Gui and graphics
 import java.awt.*;
-import java.awt.geom.*;
+
 
 public class GuardGUI{
 	//Counter currently manipulated and referenced
@@ -34,11 +29,11 @@ public class GuardGUI{
 	 */
 	public void createGUI(){
 		//Button "in"
-		JButton inButton = new JButton("Bil kÃ¸rer ind");
+		JButton inButton = new JButton("Bil kører ind");
 		inButton.addActionListener(createDiffButtonListener(-1));
 		
 		//Button "out"
-		JButton outButton = new JButton("Bil kÃ¸rer ud");
+		JButton outButton = new JButton("Bil kører ud");
 		outButton.addActionListener(createDiffButtonListener(1));
 		
 		//Setting up the window

@@ -1,6 +1,6 @@
+package Oppgave1;
 //Import everything for graphics and windows.
 import java.awt.*;
-import java.awt.geom.*;
 import javax.swing.*;
 
 //Import other classical goodies
@@ -36,18 +36,19 @@ public class CompositeIcon implements Icon {
 	 *	Removes an icon from the list of icons.
 	 */
 	public void removeIcon(Icon ic) {
-		icons.remove(ic);
+		if(icons.remove(ic)){
 
-		//Changes the width
-		width -= ic.getIconWidth();
-
-		//Checks if the height has to be changed.
-		if(height == ic.getIconHeight()){
-			int newHeight = 0;
-
-			for(Icon i : icons) {
-				if (newHeight < i.getIconHeight()) {
-					newHeight = i.getIconHeight();
+			//Changes the width
+			width -= ic.getIconWidth();
+	
+			//Checks if the height has to be changed.
+			if(height == ic.getIconHeight()){
+				int newHeight = 0;
+	
+				for(Icon i : icons) {
+					if (newHeight < i.getIconHeight()) {
+						newHeight = i.getIconHeight();
+					}
 				}
 			}
 		}

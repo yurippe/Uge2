@@ -1,3 +1,5 @@
+package Oppgave2;
+
 import java.util.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
