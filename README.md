@@ -20,7 +20,7 @@ Bruger dit program andre mønstre end composite?
    icons. Hermed følger den præcis Composite Mønstret.
 
 #UML Diagram
-![UML](img/uml.png?raw=true)
+![UML](uml.png)
 
    
 #To run:
