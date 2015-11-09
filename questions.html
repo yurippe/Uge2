@@ -1,0 +1,174 @@
+<html>
+
+<head>
+<style>
+article {
+background-color: #FFF;
+border-bottom-color: #333;
+border-bottom-left-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-style: none;
+border-bottom-width: 0px;
+border-image-outset: 0 0 0 0;
+border-image-repeat: stretch stretch;
+border-image-slice: 100% 100% 100% 100%;
+border-image-source: none;
+border-image-width: 1 1 1 1;
+border-left-color: #333;
+border-left-style: none;
+border-left-width: 0px;
+border-right-color: #333;
+border-right-style: none;
+border-right-width: 0px;
+border-top-color: #333;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-top-style: none;
+border-top-width: 0px;
+box-sizing: border-box;
+color: #333;
+display: block;
+font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+font-feature-settings: normal;
+font-kerning: auto;
+font-language-override: normal;
+font-size: 16px;
+font-size-adjust: none;
+font-stretch: normal;
+font-style: normal;
+font-synthesis: weight style;
+font-variant: normal;
+font-variant-alternates: normal;
+font-variant-caps: normal;
+font-variant-east-asian: normal;
+font-variant-ligatures: normal;
+font-variant-numeric: normal;
+font-variant-position: normal;
+font-weight: 400;
+line-height: 25.6px;
+padding-bottom: 30px;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 30px;
+word-wrap: break-word;
+-moz-border-bottom-colors: none;
+-moz-border-left-colors: none;
+-moz-border-right-colors: none;
+-moz-border-top-colors: none;
+}
+h1 {
+border-bottom-color: #EEE;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+box-sizing: border-box;
+color: #333;
+font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+font-feature-settings: normal;
+font-kerning: auto;
+font-language-override: normal;
+font-size: 36px;
+font-size-adjust: none;
+font-stretch: normal;
+font-style: normal;
+font-synthesis: weight style;
+font-variant: normal;
+font-variant-alternates: normal;
+font-variant-caps: normal;
+font-variant-east-asian: normal;
+font-variant-ligatures: normal;
+font-variant-numeric: normal;
+font-variant-position: normal;
+font-weight: 700;
+line-height: 43.2px;
+margin-bottom: 16px;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 0px;
+padding-bottom: 10.8px;
+word-wrap: break-word;
+}
+p {
+box-sizing: border-box;
+color: #333;
+font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+font-feature-settings: normal;
+font-kerning: auto;
+font-language-override: normal;
+font-size: 16px;
+font-size-adjust: none;
+font-stretch: normal;
+font-style: normal;
+font-synthesis: weight style;
+font-variant: normal;
+font-variant-alternates: normal;
+font-variant-caps: normal;
+font-variant-east-asian: normal;
+font-variant-ligatures: normal;
+font-variant-numeric: normal;
+font-variant-position: normal;
+font-weight: 400;
+line-height: 25.6px;
+margin-bottom: 16px;
+margin-top: 0px;
+word-wrap: break-word;
+}
+.markdown-body {
+	font-family: "Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";
+	font-size: 16px;
+	line-height: 1.6;
+	word-wrap: break-word;
+}
+</style>
+</head>
+
+<body>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage">
+<h1><a id="user-content-sp&oslash;rsm&aring;l" class="anchor" href="#sp&oslash;rsm&aring;l" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sp&oslash;rsm&aring;l</h1>
+
+<p>Bruger du i dit program anonyme klasser og hj&aelig;lpemetoder?</p>
+
+<ul>
+<li><p>Knapperne dannes med en hj&aelig;lpe metode, der danner objektet, tooltip
+og p&aring;s&aelig;tter en ActionListener.</p></li>
+<li><p>Vi bruger anonyme klasser, hvilket ville betyde redundant kode,
+hvis dette ikke var placeret i en hj&aelig;lpemetode.</p></li>
+</ul>
+
+<p>Hvilke forskellige interfaces bruger dit program?</p>
+
+<ul>
+<li><p>Icon</p>
+
+<ul>
+<li>squareIcon og CompositeIcon er begge icons.</li>
+</ul></li>
+<li><p>ActionListener</p>
+
+<ul>
+<li>Knapperne i SquareWindow er dannet af anonyme klasser med
+ActionListener interfacet.</li>
+</ul></li>
+</ul>
+
+<p>Bruger dit program andre m&oslash;nstre end composite?</p>
+
+<ul>
+<li>B&aring;de SquareIcon og CompositeIcon implementerer icon interfacet, og
+et CompositeIcon er i SquareWindow holder styr p&aring; alle de tilf&oslash;jede
+icons. Hermed f&oslash;lger den pr&aelig;cis Composite M&oslash;nstret.</li>
+</ul>
+
+<h1><a id="user-content-uml-diagram" class="anchor" href="#uml-diagram" aria-hidden="true"><span class="octicon octicon-link"></span></a>UML Diagram</h1>
+
+<p><a href="UML.png" target="_blank"><img src="UML.png" alt="UML" style="max-width:100%;"></a></p>
+
+<h1><a id="user-content-to-run" class="anchor" href="#to-run" aria-hidden="true"><span class="octicon octicon-link"></span></a>To run:</h1>
+
+<ul>
+<li>Go to the bin folder (On linux <code>cd bin</code>)</li>
+<li>On windows, run Oppgave1.bat or Oppgave2.bat</li>
+<li>On linux run <code>java Oppgave1.Main</code> or <code>java Oppgave2.ParkingTest</code></li>
+</ul>
+</article>
+</body>
+</html>
