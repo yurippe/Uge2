@@ -13,6 +13,8 @@ Hvilke forskellige interfaces bruger dit program?
  - ActionListener
     - Knapperne i SquareWindow er dannet af anonyme klasser med
 	  ActionListener interfacet.
+	  
+ - ChangeListener
 
 Bruger dit program andre mønstre end composite?
  - Både SquareIcon og CompositeIcon implementerer icon interfacet, og
